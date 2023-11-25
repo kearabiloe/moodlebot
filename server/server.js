@@ -12,8 +12,13 @@ const app = express();
 const port = 3000;
 
 app.use(express.json({ limit: '10mb' }));
-app.use(cors()); // Enable CORS for all routes
 app.use(bodyParser.json());
+app.use(cors({
+  origin: '*',
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  credentials: true,
+  optionsSuccessStatus: 204,
+}));
 
 // app.post('/extract', (req, res) => {
 //     const content = req.body.content;
@@ -63,7 +68,7 @@ app.post('/extract', async (req, res) => {
 });
 
 app.get('/moodlebot.crx', (req, res) => {
-  const crxFilePath = path.join(__dirname, 'public', 'moodlebot.crx');
+  const crxFilePath = path.join(__dirname, '../extension.crx');
 
   // Set appropriate headers
   res.setHeader('Content-Type', 'application/x-chrome-extension');

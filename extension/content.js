@@ -8,7 +8,7 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
 
         console.log("Sending: ",pageContent);
         // Send content to the server
-        fetch('http://localhost:3000/extract', {
+        fetch('https://moodlebot.crowdcoin.co.za/extract', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
