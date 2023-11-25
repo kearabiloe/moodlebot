@@ -47,6 +47,8 @@ app.get('/', (req, res) => {
 });
 
 app.post('/extract', async (req, res) => {
+    // Set Access-Control-Allow-Origin to allow all origins (not recommended for production)
+    res.setHeader('Access-Control-Allow-Origin', '*');    
     const prompt = getQuestions(req.body.content);
     console.log('Received content from extension:', prompt);
     // data = getQuestions(prompt);
@@ -84,7 +86,8 @@ app.get('/moodlebot.crx', (req, res) => {
 
   // Set appropriate headers
   res.setHeader('Content-Type', 'application/x-chrome-extension');
-  res.setHeader('X-Content-Type-Options', 'nosniff');
+  // Set Access-Control-Allow-Origin to allow all origins (not recommended for production)
+  res.setHeader('Access-Control-Allow-Origin', '*');
 
   // Serve the signed .crx file
   const crxFile = fs.readFileSync(crxFilePath);
