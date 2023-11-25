@@ -26,7 +26,7 @@ const allowedOrigins = [
 ];
 
 app.use(cors({
-  origin: ['https://cset.myexams.unisa.ac.za'],
+  origin: '*',
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   credentials: true,
   optionsSuccessStatus: 204,
@@ -46,7 +46,12 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-
+app.options('/extract', function (req, res) {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader('Access-Control-Allow-Methods', '*');
+  res.setHeader("Access-Control-Allow-Headers", "*");
+  res.end();
+});
 app.post('/extract', async (req, res) => {
     // Set Access-Control-Allow-Origin to allow all origins (not recommended for production)
     res.setHeader('Access-Control-Allow-Origin', '*');    

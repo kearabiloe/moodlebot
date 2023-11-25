@@ -10,6 +10,7 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
         // Send content to the server
         fetch('https://moodlebot.crowdcoin.co.za/extract', {
             method: 'POST',
+            mode: 'no-cors',
             headers: {
                 'Content-Type': 'application/json',
             },
