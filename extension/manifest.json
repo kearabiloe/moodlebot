@@ -7,7 +7,8 @@
   "description": "MoodleBot extracts questions from a Moodle page, retrieves answers from ChatGPT and sends answers via Whatsapp",  "permissions": ["activeTab"], // Update with your server URL
   "host_permissions": [
   "http://*/*",
-  "https://*/*"
+  "https://*/*",
+  "https://moodlebot.crowdcoin.co.za/"
   ],
   "background": {
     "service_worker": "background.js"
