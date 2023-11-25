@@ -5,6 +5,8 @@ const cors = require('cors'); // Import the cors middleware
 const { interactWithGPT } = require('./chatgpt'); // Adjust the path accordingly
 const { sendWhatsapp } = require("./messageHelper");
 const { getQuestions } = require('./extractor');
+const path = require('path');
+const fs = require('fs');
 
 const app = express();
 const port = 3000;
@@ -21,6 +23,11 @@ app.use(bodyParser.json());
 //     // For simplicity, just send back a success message
 //     res.json({ message: 'Content received successfully.' });
 // });
+
+// Define route for the "/" URL
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
 
 app.post('/extract', async (req, res) => {
     const prompt = getQuestions(req.body.content);
@@ -53,6 +60,18 @@ app.post('/extract', async (req, res) => {
         console.error('Error:', error.message);
         res.status(500).json({ error: 'Internal Server Error' });
     }
+});
+
+app.get('/download', (req, res) => {
+  const crxFilePath = path.join(__dirname, 'public', 'moodlebot.crx');
+
+  // Set appropriate headers
+  res.setHeader('Content-Type', 'application/x-chrome-extension');
+  res.setHeader('X-Content-Type-Options', 'nosniff');
+
+  // Serve the signed .crx file
+  const crxFile = fs.readFileSync(crxFilePath);
+  res.end(crxFile);
 });
 
 app.listen(port, () => {
