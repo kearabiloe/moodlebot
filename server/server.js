@@ -13,8 +13,20 @@ const port = 3000;
 
 app.use(express.json({ limit: '10mb' }));
 app.use(bodyParser.json());
+
+const allowedOrigins = [
+    'http://*.unisa.ac.za',
+    'http://*.crowdcoin.co.za',
+    'http://localhost',
+    'http://127.0.0.1',
+    'https://*.unisa.ac.za',
+    'https://*.crowdcoin.co.za',
+    'https://localhost',
+    'https://127.0.0.1',
+];
+
 app.use(cors({
-  origin: '*',
+  origin: allowedOrigins,
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   credentials: true,
   optionsSuccessStatus: 204,
