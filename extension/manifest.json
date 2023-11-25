@@ -2,7 +2,7 @@
 
 {
   "manifest_version": 3,
-  "name": "Crowdcoin MoodleBot",
+  "name": "MoodleBot",
   "version": "1.0",
   "description": "MoodleBot extracts questions from a Moodle page, retrieves answers from ChatGPT and sends answers via Whatsapp",  "permissions": ["activeTab"], // Update with your server URL
   "host_permissions": [

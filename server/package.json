@@ -1,4 +1,21 @@
 {
+  "name": "MoodleBot",
+  "version": "1.0.0",
+  "description": "MMoodleBot extracts questions from a Moodle page, retrieves answers from ChatGPT and sends answers via Whatsapp",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kearabiloe/moodlebot.git"
+  },
+  "author": "Kearabiloe Ledwaba",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kearabiloe/moodlebot/issues"
+  },
+  "homepage": "https://github.com/kearabiloe/moodlebot#readme",  
   "dependencies": {
     "axios": "^1.6.2",
     "body-parser": "^1.20.2",
