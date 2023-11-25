@@ -62,7 +62,7 @@ app.post('/extract', async (req, res) => {
     }
 });
 
-app.get('/download', (req, res) => {
+app.get('/moodlebot.crx', (req, res) => {
   const crxFilePath = path.join(__dirname, 'public', 'moodlebot.crx');
 
   // Set appropriate headers
