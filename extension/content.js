@@ -1,20 +1,19 @@
-// content.js
-
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     if (request.action === 'extract_content') {
+        const pageContent = document.documentElement.outerHTML;
+        const file = new Blob([pageContent], { type: 'text/html' });
 
-        // const pageContent = document.documentElement.outerHTML;
-        const pageContent = document.getElementById('responseform');
+        // Create a FormData object and append the file
+        const formData = new FormData();
+        formData.append('file', file, 'pageContent.html');
 
-        console.log("Sending: ",pageContent);
         // Send content to the server
-        fetch('https://moodlebot.crowdcoin.co.za/extract', {
+        // const url = 'http://localhost:3000/extract';
+        const url = 'https://moodlebot.crowdcoin.co.za/extract';
+        fetch(url, {
             method: 'POST',
+            body: formData,
             mode: 'no-cors',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ content: pageContent }),
         })
         .then(response => response.json())
         .then(data => {

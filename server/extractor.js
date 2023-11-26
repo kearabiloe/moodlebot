@@ -2,7 +2,7 @@ const { JSDOM } = require('jsdom');
 
 function getQuestions(doc_string){
 
-	console.log(doc_string);
+	console.log(doc_string.slice(0,50));
 	
 	// Your HTML string
 	const htmlString = doc_string ;
@@ -12,13 +12,14 @@ function getQuestions(doc_string){
 
 	// Access the document
 	const document = dom.window.document;
-
+// return document;
+    // Find the question text
+    // const questionNo = document.querySelector('.qno').textContent;
+    const questionNo = Array.from(document.querySelectorAll('.qno')).map(label => label.textContent.trim());
 
     // Find the question text
-    const questionNo = document.querySelector('.qno').textContent;
-
-    // Find the question text
-    const questionText = document.querySelector('.qtext').textContent;
+    // const questionText = document.querySelector('.qtext').textContent;
+    const questionText = Array.from(document.querySelectorAll('.qtext')).map(label => label.textContent.trim());
 
     // Find all answer options
     const answerLabels = document.querySelectorAll('div[data-region="answer-label"]');
@@ -33,7 +34,7 @@ function getQuestions(doc_string){
         answers:answerTexts
     };
 
-	console.log(data); 
+	// console.log(data); 
 
 	return data;
 }
