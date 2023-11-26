@@ -59,7 +59,7 @@ app.post('/extract', upload.single('file'), async (req, res) => {
           params.answer = params.answer.replaceAll('\n','# ')
 
             message = sendWhatsapp(msisdn, params);
-            res.json(message);
+            res.json(params);
         });
 
     } catch (error) {
