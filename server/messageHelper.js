@@ -84,7 +84,7 @@ function sendWhatsapp(msisdn, params){
   console.log("Built data: ",data);
   return sendMessage(data)
     .then(function (response) {
-      console.log("sendWhatsapp then",response);
+      // console.log("sendWhatsapp then",response);
       return response;
     })
     .catch(function (error) {

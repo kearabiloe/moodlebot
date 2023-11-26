@@ -56,7 +56,7 @@ app.post('/extract', upload.single('file'), async (req, res) => {
                 'whatsapp': msisdn
             };
           
-          params.answer = params.answer.replaceAll('\n','')
+          params.answer = params.answer.replaceAll('\n','# ')
 
             message = sendWhatsapp(msisdn, params);
             res.json(message);
