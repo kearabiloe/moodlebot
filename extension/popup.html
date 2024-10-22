@@ -1,7 +1,54 @@
 <!DOCTYPE html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>MoodleBot Popup</title>
+      <!-- Material Design Lite CSS -->
+      <link rel="stylesheet" href="material.indigo-pink.min.css">
+      <link rel="stylesheet" href="popup.css">
+  </head>
   <body>
-    <button id="sendContent">Send Content</button>
-    <script src="popup.js"></script>
+      <div class="mdl-card mdl-shadow--2dp">
+          <div class="mdl-card__title">
+              <h2 class="mdl-card__title-text">MoodleBot</h2>
+          </div>
+          <div class="mdl-card__supporting-text">
+              <p>Scan the code bellow or Whatsapp <strong id="whatsappCommand"></strong> to <strong id="whatsappNumber"></strong> to pair device.</p>
+              
+              <!-- QR Code Image -->
+              <img id="qrcode" src="images/icon48.png" alt="QR Code">
+              <!-- Serial Number Field -->
+              <div class="mdl-textfield mdl-js-textfield">
+                  <input class="mdl-textfield__input" disabled type="text" id="serialNumber" value="">
+                  <label class="mdl-textfield__label" for="serialNumber">Device</label>
+              </div>
+              <!-- Toggle Button for Auto Capture Mode -->
+              <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="autoCapture">
+                  <input type="checkbox" id="autoCapture" class="mdl-switch__input">
+                  <span class="mdl-switch__label">Device Paired</span>
+              </label>
+          </div>
+              <input type="file" id="fileInput" style="display: none;">
+          <div class="mdl-card__actions mdl-card--border">
+              <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="sendContent" >
+                  Test current page
+              </button> <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="uploadPdf" >
+                  Upload File
+              </button>
+          </div>
+      </div>
+      <!-- Material Design Lite JavaScript -->
+      <script defer src="material.min.js"></script>
+      <script src="qrious.min.js"></script>
+      <script src="popup.js"></script>
   </body>
 </html>
+
+<!-- <html>
+  <body>
+    <button id="sendContent">Send Content</button>
+  </body>
+</html>
+ -->

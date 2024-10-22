@@ -1,6 +1,8 @@
+// chatgpt.js
+
 require('dotenv').config();
 
-const apiKey = process.env.OPENAI_API_KEY || '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'; 
+const apiKey = process.env.OPENAI_API_KEY || 'sk-svcacct-o7H9YfQLnY-Oo-p1LWZkERSMrO2l5A7y2benKTrQKETtm62KEwm10JCGx-_LEifT3BlbkFJCtK1FrNtQ-WCSSApj-xioVr9UsW_lpn6FOgZrDt-feWfNkM2LJdwr1ymTh-bJKAA'; 
 const apiUrl = 'https://api.openai.com/v1/chat/completions';
 
 test_data = {
@@ -22,20 +24,23 @@ async function interactWithGPT(prompt=test_data) {
     };
 
     const requestBody = {
-        model: "gpt-3.5-turbo",
+        model: "gpt-4o",
         messages: [
             {
                 "role": "user",
-                "content": `What is the correct choice? ${JSON.stringify(prompt)}`
+                "content": `Identify academic questions in this document and give answers ${JSON.stringify(prompt)}`
+                // "content": `Identify academic questions in this document and give answers for one question at a time.? `
             }
         ],
-        temperature: 1,
-        max_tokens: 256,
-        top_p: 1,
-        frequency_penalty: 0,
-        presence_penalty: 0,
+        temperature: 0.7, // A slightly lower temperature for more focused responses
+        max_tokens: 500,  // Set a reasonable limit for answers based on your needs
+        top_p: 0.9,       // Use top-p sampling to enhance diversity while maintaining coherence
+        frequency_penalty: 0.5, // Encourage varied responses by slightly penalizing frequent phrases
+        presence_penalty: 0.5,   // Increase the likelihood of introducing new topics
+
     };
 
+console.log(requestBody);
     try {
         const response = await fetch(apiUrl, {
             method: 'POST',

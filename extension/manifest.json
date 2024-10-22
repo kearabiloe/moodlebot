@@ -1,24 +1,34 @@
-// manifest.json
-
 {
   "manifest_version": 3,
   "name": "MoodleBot",
   "version": "1.0",
-  "description": "MoodleBot extracts questions from a Moodle page, retrieves answers from ChatGPT and sends answers via Whatsapp",  "permissions": ["activeTab"], // Update with your server URL
+  "description": "MoodleBot extracts questions from a Moodle page, retrieves answers from ChatGPT and sends answers via Whatsapp",
+  "permissions": [
+    "activeTab",
+    "downloads",
+    "webRequest",
+    "storage"
+  ],
   "host_permissions": [
-  "http://*/*",
-  "https://*/*",
-  "https://moodlebot.crowdcoin.co.za/"
+    "http://*/*",
+    "https://*/*",
+    "https://moodlebot.crowdcoin.co.za/"
   ],
   "background": {
     "service_worker": "background.js"
   },
   "commands": {
-    "triggerAction": {
+    "Extract": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+H"
+      },
+      "description": "Trigger Extraction"
+    },
+    "SavePDF": {
       "suggested_key": {
         "default": "Ctrl+Shift+F"
       },
-      "description": "Trigger Action"
+      "description": "Trigger SavePDF"
     }
   },
   "action": {
@@ -39,5 +49,8 @@
       "matches": ["<all_urls>"],
       "js": ["content.js"]
     }
-  ]
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
+  }
 }
