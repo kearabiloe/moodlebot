@@ -23,7 +23,7 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
         console.log("Sending file to server with filename:", filename);
 
         // Send content to the server
-        const url = 'http://localhost:3000/extract';
+        const url = 'https://moodlebot.crowdcoin.co.za/extract';
         fetch(url, {
             method: 'POST',
             body: formData,
