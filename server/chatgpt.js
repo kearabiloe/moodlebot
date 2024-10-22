@@ -33,7 +33,7 @@ async function interactWithGPT(prompt=test_data) {
             }
         ],
         temperature: 0.7, // A slightly lower temperature for more focused responses
-        max_tokens: 500,  // Set a reasonable limit for answers based on your needs
+        max_tokens: 5000,  // Set a reasonable limit for answers based on your needs
         top_p: 0.9,       // Use top-p sampling to enhance diversity while maintaining coherence
         frequency_penalty: 0.5, // Encourage varied responses by slightly penalizing frequent phrases
         presence_penalty: 0.5,   // Increase the likelihood of introducing new topics
