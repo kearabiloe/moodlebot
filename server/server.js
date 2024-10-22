@@ -145,6 +145,27 @@ app.get('/moodlebot.crx', (req, res) => {
     });
 });
 
+// Route to serve the Chrome extension .crx file
+// Route to serve the Chrome extension .zip file
+app.get('/moodlebot.zip', (req, res) => {
+  const zipFilePath = path.join(__dirname, '../extension.zip');
+
+  // Set appropriate headers for the ZIP file
+  res.setHeader('Content-Type', 'application/zip');
+  res.setHeader('Access-Control-Allow-Origin', '*');
+
+  // Serve the ZIP file
+  fs.readFile(zipFilePath)
+    .then(zipFile => {
+      res.setHeader('Content-Disposition', 'attachment; filename="moodlebot.zip"'); // Prompt the user to download the file
+      res.end(zipFile);
+    })
+    .catch(err => {
+      console.error('Error serving ZIP file:', err.message);
+      res.status(500).send('Error serving ZIP file');
+    });
+});
+
 // Start the server
 app.listen(port, () => {
   console.log(`Server is running at http://localhost:${port}`);
