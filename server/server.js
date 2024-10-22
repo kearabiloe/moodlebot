@@ -76,6 +76,11 @@ app.post('/extract', upload.single('file'), async (req, res) => {
   }
 });
 
+app.get('/results', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'results.html'));
+});
+
+
 // New endpoint to fetch results based on cellno
 app.get('/results/:cellno/', (req, res) => {
   const cellno = req.params.cellno;
